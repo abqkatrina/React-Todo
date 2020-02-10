@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+// import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header';
-import Todo from './components/Todo';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+import './components/Todo.css';
 
 ////////////////////DATA//////////////////////////////
 const tasks = [
   {
-    name: 'Call Grandma',
+    name: 'call Grandma',
     id: 0,
     completed: false
   },
   {
-    name: 'Pack office supplies',
+    name: 'pack office supplies',
     id: 1,
     completed: false
   },
   {
-    name: 'Do dishes',
+    name: 'do dishes',
     id: 2,
     completed: false
   },
   {
-    name: 'Make doc. appt.',
+    name: 'make doc. appt.',
     id: 3,
     completed: false
   }
@@ -35,15 +35,15 @@ class App extends Component {
     super();
     this.state = {
       todoList: tasks
-    }
+    };
   }
   //TOGGLE FUNCTION
   toggleTask = clickedId => {
-    const newTodoList = this.state.todoList.map(task=> {
-      if (task.id === clickedId) {
+    const newTodoList = this.state.todoList.map(task => {
+      if(task === clickedId) {
         return {
           ...task,
-          completed: !task.completed
+          completed: !task.completed,
         };
       } else {
         return task;
@@ -53,6 +53,10 @@ class App extends Component {
       todoList: newTodoList
     });
   };
+
+  // markComplete() {
+  //   this.setState({name: `${this.task.name}`, id: `${this.task.id}`, completed: true});
+  // };
 
   // ADD FUNCTION
   addNewTask = taskText => {
@@ -67,18 +71,18 @@ class App extends Component {
   }
 
   //REMOVE FUNCTION
-  removeTask = clickedId => {
-   const unfinishedList = this.state.todoList.filter(task => {
-     if(task.id != clickedId){
-       return {
-        ...task
-       }
-   }});
-   this.setState({
-     todoList: unfinishedList
-   });
-  };
-
+  removeTask = () => {
+    const unfinishedList = this.state.todoList.filter(task => {
+      if(!task.completed) {
+        return{
+          ...task
+        };
+      }
+        this.setState({
+          todoList: unfinishedList
+        });
+      }
+    )}
 
   render() {
     return (
@@ -86,15 +90,19 @@ class App extends Component {
         <div className='header'>
           <Header />
         </div>
-        <div className='switchBox'>
+        <div className='main'>
           <p>App will hold all the data needed for this project. It will also be the container for your Todo Components.
+            <br/>
               - All of your application data will be stored here.
+              <br/>
               - All of your `handler` functions should live here.</p>
-          <Switch>
-            <Route path='/todolist' render={(props) => <TodoList {...props} tasks={this.state.todoList} toggleTask={this.toggleTask} removeTask={this.removeTask}/>} />
-            <Route path='/todoform' render={(props) => <TodoForm {...props} addNewTask={this.addNewTask}  />} />
+          {/* <Switch> */}
+            {/* <Route path='/todolist' render={(routeProps) => <TodoList {...routeProps} tasks={this.state.todoList} toggleTask={this.toggleTask} removeTask={this.removeTask}/>} /> */}
+            {/* <Route path='/todoform' render={(routeProps) => <TodoForm {...routeProps} tasks={this.state.todoList} addNewTask={this.addNewTask}  />} /> */}
             {/* <Route path='/todo' render={(props) => <Todo {...props} tasks={this.state.todoList} toggleTask={this.toggleTask}/>} /> */}
-          </Switch>
+          {/* </Switch> */}
+          <TodoForm  tasks={this.state.todoList} addNewTask={this.addNewTask} /*removeTask={this.removeTask}*/ />
+          <TodoList  tasks={this.state.todoList} toggleTask={this.toggleTask} /*markComplete={this.markComplete}*/ />
         </div>
       </div>
     );

@@ -6,21 +6,21 @@ import Todo from './Todo';
 
 const TodoList = props => {
  
-        return(
-            <div>
-                <h1>TODOLIST.JS</h1>
-                <p>TodoList  receives your Todos array and iterates over the list generating a new Todo for each element in the array.
-                    this is the total list shown.
-                </p>
-                <div className="todoList">
+
+
+    return(
+        <div>
+            <h3>TODOLIST.JS</h3>
+            <p>
+                TodoList  receives your Todos array and iterates over the list generating a new Todo for each element in the array.
+            </p>  
+
+            <div className="todoList">
                 {props.tasks.map(task => (
-                    <Todo key={task.id} task={task} toggleTask={props.toggleTask}/>
+                    <Todo key={task.id} task={task} toggleTask={props.toggleTask} /*markComplete={props.markComplete}*//>
                 ))}
-                <button className="remove" onClick={props.removeTask}>
-                    Remove Completed
-                </button>
-                </div>
             </div>
-        )
+        </div>
+    )
 }
 export default TodoList;

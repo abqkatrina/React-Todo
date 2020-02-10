@@ -1,0 +1,30 @@
+body {
+    background-color: blanchedalmond;
+    color: navy;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 1.0rem;
+}
+
+.listItem {
+    color: forestgreen;
+    font-weight: 600;
+    border: 1px solid forestgreen;
+    text-align: left;
+    padding-left: 10%;
+    width: 60%;
+    
+}
+
+.task-completed {
+    color: red;
+}

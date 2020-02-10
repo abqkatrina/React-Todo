@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import TodoList from './TodoList';
+
+
 
 class TodoForm extends Component {
     constructor() {
@@ -18,21 +19,29 @@ class TodoForm extends Component {
         this.props.addNewTask(this.state.newTask);
     };
 
+    // handleClick = event => {
+    //     this.props.removeTask();
+    // };
+
     render(){
         return(
             <div>
-                <h1>TODOFORM.JS</h1>
+                <h3>TODOFORM.JS</h3>
                 <p>TodoForm will hold your input field and your `Add Todo` and `Clear Completed` buttons.
+                    <br/>
                 - Your input field should take in user input, and allow a user to press `Enter` or click on
                 the `Submit Button` to add a todo to your list.
+                <br/>
                 - Once a todo is submitted, the Todo List should re-render and show the added todo.
-                this is the input page that sends new data to todo</p>
+                </p>
                 <form onSubmit={this.handleSubmit}>
                     <input type='text' name='task' placeholder='task' value={this.state.newTask} onChange={this.handleChange}/>
                     <button type='submit'>Add Task</button>
-                 
+                    {/* <button className="remove" value={this.state.task} onClick={this.handleClick}>
+                    Remove Completed
+                </button> */}
                 </form>
-                <TodoList listItem={this.listItem} />
+         
             </div>
         )
     }
