@@ -1,4 +1,9 @@
 import React from 'react';
+import { Route, Switch } from 'react-dom'
+import Header from './components/Header';
+import Todo from './components/TodoComponents/Todo';
+import TodoForm from './components/TodoComponents/TodoForm';
+import TodoList from './components/TodoComponents/TodoList';
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -7,7 +12,19 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
+        <div className='header'>
+          <Header />
+        </div>
+        <div className='switchBox'>
+          <P>App will hold all the data needed for this project. It will also be the container for your Todo Components.
+              - All of your application data will be stored here on.
+              - All of your `handler` functions should live here.</P>
+          <Switch>
+            <Route path='/todolist' component={TodoList} />
+            <Route path='/todoform' component={TodoForm} />
+            <Route path='/todo' component={Todo} />
+          </Switch>
+        </div>
       </div>
     );
   }
