@@ -45,12 +45,14 @@ class App extends Component {
       if(task.id === clickedId) {
         return {
           ...task,
-          completed: !task.completed,
+          completed: !task.completed
         };
       } else {
-        return task;
-      }
-    });
+        return {
+        ...task,
+        completed: task.completed
+      };
+    }});
     this.setState({
       todoList: newTodoList
     });
@@ -70,17 +72,20 @@ class App extends Component {
     });
   }
 
+
   //REMOVE FUNCTION
   removeTask = () => {
-    const unfinishedList = [];
-    this.state.todoList.filter(task => {
-      if(!task.completed){
-        unfinishedList.push(task)
-      }});
-        this.setState({
-          todoList: unfinishedList
-        });
-  };
+    console.log('remove function');
+    const unfinishedList = this.state.todoList.filter(task => {
+      if(task.completed === false){
+        return{
+          ...task,
+          completed: !task.completed
+        };
+      }})
+      this.setState({ todoList: unfinishedList })
+    };
+
 
   render() {
     return (

@@ -19,9 +19,9 @@ class TodoForm extends Component {
         this.props.addNewTask(this.state.newTask);
     };
 
-    handleClick = event => {
-        this.props.removeTask();
-    };
+    handleRemoved = () => {
+        this.props.removeTask(this.state);
+    }
 
     render(){
         return(
@@ -35,11 +35,11 @@ class TodoForm extends Component {
                 - Once a todo is submitted, the Todo List should re-render and show the added todo.
                 </p> */}
                 <form onSubmit={this.handleSubmit}>
-                    <input type='text' name='task' placeholder='task' value={this.state.newTask} onChange={this.handleChange}/>
-                    <button type='submit'>Add Task</button>
-                    <button className="remove" value={this.state.task} onClick={this.handleClick}>
+                    <input type='text' name='task' className='input' placeholder='task' value={this.state.newTask} onChange={this.handleChange}/>
+                    <button type='submit' name='add'>Add Task</button>
+                    <button type='button' name='remove'  onClick={this.handleRemoved}>
                     Remove Completed
-                </button>
+                    </button>
                 </form>
          
             </div>
