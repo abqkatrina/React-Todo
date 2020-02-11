@@ -39,8 +39,9 @@ class App extends Component {
   }
   //TOGGLE FUNCTION
   toggleTask = clickedId => {
+    console.log(clickedId);
     const newTodoList = this.state.todoList.map(task => {
-      if(task === clickedId) {
+      if(task.id === clickedId) {
         return {
           ...task,
           completed: !task.completed,
@@ -52,6 +53,7 @@ class App extends Component {
     this.setState({
       todoList: newTodoList
     });
+    console.log(this.state.todoList);
   };
 
   // markComplete() {
@@ -75,13 +77,18 @@ class App extends Component {
     const unfinishedList = this.state.todoList.filter(task => {
       if(!task.completed) {
         return{
-          ...task
+          ...task,
+          completed: !task.completed
         };
-      }
+      } else {
+        return {
+          task: null
+        };
+      };
+    }
         this.setState({
           todoList: unfinishedList
-        });
-      }
+        })
     )}
 
   render() {
@@ -101,7 +108,7 @@ class App extends Component {
             {/* <Route path='/todoform' render={(routeProps) => <TodoForm {...routeProps} tasks={this.state.todoList} addNewTask={this.addNewTask}  />} /> */}
             {/* <Route path='/todo' render={(props) => <Todo {...props} tasks={this.state.todoList} toggleTask={this.toggleTask}/>} /> */}
           {/* </Switch> */}
-          <TodoForm  tasks={this.state.todoList} addNewTask={this.addNewTask} /*removeTask={this.removeTask}*/ />
+          <TodoForm  tasks={this.state.todoList} addNewTask={this.addNewTask} removeTask={this.removeTask} />
           <TodoList  tasks={this.state.todoList} toggleTask={this.toggleTask} /*markComplete={this.markComplete}*/ />
         </div>
       </div>

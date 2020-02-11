@@ -19,9 +19,9 @@ class TodoForm extends Component {
         this.props.addNewTask(this.state.newTask);
     };
 
-    // handleClick = event => {
-    //     this.props.removeTask();
-    // };
+    handleClick = event => {
+        this.props.removeTask();
+    };
 
     render(){
         return(
@@ -37,9 +37,9 @@ class TodoForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type='text' name='task' placeholder='task' value={this.state.newTask} onChange={this.handleChange}/>
                     <button type='submit'>Add Task</button>
-                    {/* <button className="remove" value={this.state.task} onClick={this.handleClick}>
+                    <button className="remove" value={this.state.task} onClick={this.handleClick}>
                     Remove Completed
-                </button> */}
+                </button>
                 </form>
          
             </div>
