@@ -25,6 +25,10 @@ h3 {
     
 }
 
-.task-completed {
+.listitem:hover {
+    cursor: pointer;
+}
+
+.completed {
     color: red;
 }

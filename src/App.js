@@ -37,6 +37,7 @@ class App extends Component {
       todoList: tasks
     };
   }
+
   //TOGGLE FUNCTION
   toggleTask = clickedId => {
     console.log(clickedId);
@@ -56,9 +57,6 @@ class App extends Component {
     console.log(this.state.todoList);
   };
 
-  // markComplete() {
-  //   this.setState({name: `${this.task.name}`, id: `${this.task.id}`, completed: true});
-  // };
 
   // ADD FUNCTION
   addNewTask = taskText => {
@@ -74,22 +72,15 @@ class App extends Component {
 
   //REMOVE FUNCTION
   removeTask = () => {
-    const unfinishedList = this.state.todoList.filter(task => {
-      if(!task.completed) {
-        return{
-          ...task,
-          completed: !task.completed
-        };
-      } else {
-        return {
-          task: null
-        };
-      };
-    }
+    const unfinishedList = [];
+    this.state.todoList.filter(task => {
+      if(!task.completed){
+        unfinishedList.push(task)
+      }});
         this.setState({
           todoList: unfinishedList
-        })
-    )}
+        });
+  };
 
   render() {
     return (
@@ -98,18 +89,18 @@ class App extends Component {
           <Header />
         </div>
         <div className='main'>
-          <p>App will hold all the data needed for this project. It will also be the container for your Todo Components.
+          {/* <p>App will hold all the data needed for this project. It will also be the container for your Todo Components.
             <br/>
               - All of your application data will be stored here.
               <br/>
-              - All of your `handler` functions should live here.</p>
+              - All of your `handler` functions should live here.</p> */}
           {/* <Switch> */}
             {/* <Route path='/todolist' render={(routeProps) => <TodoList {...routeProps} tasks={this.state.todoList} toggleTask={this.toggleTask} removeTask={this.removeTask}/>} /> */}
             {/* <Route path='/todoform' render={(routeProps) => <TodoForm {...routeProps} tasks={this.state.todoList} addNewTask={this.addNewTask}  />} /> */}
             {/* <Route path='/todo' render={(props) => <Todo {...props} tasks={this.state.todoList} toggleTask={this.toggleTask}/>} /> */}
           {/* </Switch> */}
           <TodoForm  tasks={this.state.todoList} addNewTask={this.addNewTask} removeTask={this.removeTask} />
-          <TodoList  tasks={this.state.todoList} toggleTask={this.toggleTask} /*markComplete={this.markComplete}*/ />
+          <TodoList  tasks={this.state.todoList} toggleTask={this.toggleTask} />
         </div>
       </div>
     );
