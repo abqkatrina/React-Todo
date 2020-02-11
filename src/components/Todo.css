@@ -5,6 +5,7 @@ body {
 
 h1 {
     font-size: 1.8rem;
+    text-align: center;
 }
 
 h2 {
@@ -13,21 +14,58 @@ h2 {
 
 h3 {
     font-size: 1.0rem;
+    text-align: end;
+    margin: 0 2%;
+}
+
+h4 {
+    font-size: 0.8rem;
+    text-align: start;
+    margin: 0 2%;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row wrap;
+}
+
+.main {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.todoList {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+.Card {
+    display: flex;
+    justify-content: center;
 }
 
 .listItem {
-    color: forestgreen;
+    color: olive;
     font-weight: 600;
     font-size: 1.4rem;
-    border: 1px solid forestgreen;
+    border: 1px solid olive;
     text-align: left;
-    padding: 0 10%;
-    width: 60%;
+    padding-left: 5%;
+    width: 100%;
     background-color: antiquewhite;   
     margin: 3px;
 }
 
-.completed {
+.taskcompleted {
     color: red;
 }
 
@@ -37,7 +75,7 @@ button {
     color: navy;
     background-color: olive;
     font-weight: bold;
-    margin: 2px;
+    margin: 5px ;
     padding: 2px;
     font-size: 1.2rem;
 }
@@ -45,4 +83,5 @@ button {
 .input {
     border-radius: 10px;
     font-size: 1.2rem;
+    margin: 0 auto 5px auto;
 }
